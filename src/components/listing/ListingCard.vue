@@ -1,7 +1,8 @@
 <template lang="pug">
-    v-card
-        v-card-media(:src="listing.img", :height="height")
-        v-card-title {{ listing.title }}
+    v-hover(v-slot:default='{ hover }')
+        v-card.mx-auto(:elevation='hover ? 12 : 2', height='350', max-width='350')
+                v-card-media(:src="listing.img", :height="height" )
+                v-card-title {{ listing.title }}
 </template>
 
 <script>

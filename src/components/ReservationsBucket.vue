@@ -38,6 +38,7 @@
 
 </template>
 <script>
+// For future development search product
     export default {
         name: 'reservations-bucket',
         data: () => ({
@@ -57,7 +58,7 @@
         }),
         methods: {
             search() {
-                console.log('Im searching bitch')
+               // console.log('Im searching bitch')
             }
         },
        computed: {

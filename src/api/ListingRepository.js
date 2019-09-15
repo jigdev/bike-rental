@@ -1,15 +1,10 @@
 import products from './products.js'
-import faker from 'faker'
-import ImageFixtures from '../fixtures/ImageFixtures'
 
 let listings = products.products;
 
-
 export default class ListingRepository {
-    static findFeatured(limit) {
-        return new Promise(r => r(listings.slice(0, limit)))
-    }
 
+    // Pagination
     static findAll(page, itensPerPage) {
         return new Promise(r => {
             if (page > 0 && itensPerPage !== null) {
@@ -21,10 +16,11 @@ export default class ListingRepository {
             r(listings)
         })
     }
-
+    // Get total count for pagination
     static countAll () {
         return new Promise(r => {
             return r(listings.length)
         })
     }
+
 }

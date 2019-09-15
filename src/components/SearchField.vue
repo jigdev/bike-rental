@@ -10,7 +10,7 @@
         name: 'search-field',
         methods: {
             search() {
-                console.log('Im searching bitch')
+
             }
         }
     }

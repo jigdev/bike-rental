@@ -6,17 +6,18 @@
                 | Close
         v-layout(wrap)
             v-flex(v-for="listing in listings", xs12, sm6, md4, :key="listing.id")
-                v-card.ma-auto(:flat='flat' :loading='loading' :outlined='outlined' :elevation='elevation' :raised='raised' :width='width' :height='height')
-                        v-img.black--text(v-if='media' height='200px' :src='listing.image')
-                            v-card-title.align-end.fill-height( class="title") ${{listing.price}} / hr
-                        v-card-title.align-end.fill-height(class="title") {{listing.name.toUpperCase()}}
-                        v-card-text
-                            v-rating(:value='4.5' color='amber' half-increments='' dense='' size='15' readonly='')
-                        v-card-actions
-                                v-btn(color='primary' class="my-2" text='' )
-                                    | Share
-                                v-btn(color='primary' class="my-2" text='' @click="reserveProduct(listing)" )
-                                    | Reserve
+                v-hover(v-slot:default='{ hover }')
+                    v-card.ma-auto(:flat='flat' :loading='loading' :outlined='outlined' :elevation='hover ? 15 : 2' :raised='raised' :width='width' :height='height')
+                            v-img.black--text(v-if='media' height='200px' :src='listing.image')
+                                v-card-title.align-end.fill-height( class="title") ${{listing.price}} / hr
+                            v-card-title.align-end.fill-height(class="title") {{listing.name.toUpperCase()}}
+                            v-card-text
+                                v-rating(:value='4.5' color='amber' half-increments='' dense='' size='15' readonly='')
+                            v-card-actions
+                                    v-btn(color='primary' class="my-2" text='' )
+                                        | Share
+                                    v-btn(color='primary' class="my-2" text='' @click="reserveProduct(listing)" )
+                                        | Reserve
             v-flex
                 v-dialog(v-model='dialog', width='500' v-show="dialog")
                     v-card
@@ -33,7 +34,7 @@
     import ProductReservation from '../ProductReservation.vue';
     export default {
         name: 'all-listings',
-       components: {
+        components: {
             ProductReservation
         },
         created() {
@@ -99,6 +100,8 @@
             },
             reserveProduct(listing) {
                 this.product = Object.assign({},listing);
+                this.product.accessories =[];
+                this.product.addons =[];
                 this.dialog =true;
 
             },
