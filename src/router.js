@@ -1,37 +1,32 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from './pages/Login.vue'
-import Home from './pages/Home.vue'
-import Base from './pages/Base.vue'
-import ListingHome from './pages/modules/ListingHome.vue'
 
 Vue.use(VueRouter)
+
+
+function lazyLoad(view){
+    return() => import(`@/pages/${view}.vue`)
+  }
 
 const router = new VueRouter({
     mode: 'history',
     routes: [
         {
             path: '/',
-            component: Base,
+            component: lazyLoad('Base'),
             children: [
                 {
                     name: 'home',
                     path: '/',
-                    component: Home
-                },
-                {
-                    name: 'listings',
-                    path: '/listings/:id?',
-                    component: ListingHome,
-                    props: { id: { default: 'eita'} }
-                },
+                    component: lazyLoad('Home')
+                }
             ]
         },
         {
             //For future development
             name: 'auth',
             path: '/auth',
-            component: Login
+            component: lazyLoad('Login'),
         },
     ],
 })

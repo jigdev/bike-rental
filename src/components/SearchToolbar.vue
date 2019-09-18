@@ -17,20 +17,20 @@
                         v-icon shopping_cart
             v-spacer
             v-flex(x12)
-                search-field
+                SearchField
 
 </template>
 
 <script>
-    import SearchField from './SearchField.vue'
-
+ import SearchField from "./SearchField.vue";
     export default {
         name: 'search-toolbar',
-        components: {SearchField
+        components: {
+            SearchField
         },
         data() {
             return {
-                application: 'Bike Rental',
+                application: 'Bike Rentals',
                 dialog:false
             }
         },

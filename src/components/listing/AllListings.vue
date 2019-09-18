@@ -31,15 +31,16 @@
 
 </template>
 <script>
-    import ProductReservation from '../ProductReservation.vue';
+import ProductReservation from '../ProductReservation.vue';
+
     export default {
         name: 'all-listings',
         components: {
+
             ProductReservation
         },
         created() {
             this.$store.dispatch('fetch_listings_count')
-            this.fetch()
         },
         data() {
             return {
@@ -67,8 +68,12 @@
                 snackbar:false
             }
         },
+        created(){
+            this.fetch()
+        },
 
         computed: {
+
             listings() {
                 return this.$store.state.listing.listings
             },
@@ -87,9 +92,8 @@
             }
         },
         watch: {
-            page() {
-                this.fetch()
-            }
+            page:'fetch'
+
         },
         methods: {
             fetch() {

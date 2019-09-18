@@ -6,9 +6,10 @@
 </template>
 
 <script>
-    import SearchToolbar from '../components/SearchToolbar.vue'
-
+    import SearchToolbar from "../components/SearchToolbar.vue"
     export default {
-        components: {SearchToolbar}
+         components: {
+             SearchToolbar
+        }
     }
 </script>

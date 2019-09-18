@@ -7,19 +7,11 @@
 </template>
 
 <script>
-    import ModuleMenu from '../components/ModuleMenu.vue'
-    import ReservationsBucket from '../components/ReservationsBucket.vue'
-    import Banner from '../components/Banner.vue'
-    import AllListings from '../components/listing/AllListings.vue'
-    import ProductReservation from '../components/ProductReservation.vue'
-
     export default {
         components: {
-            AllListings,
-            Banner,
-            ModuleMenu,
-            ProductReservation,
-            ReservationsBucket
+
+            Banner: () => import("../components/Banner.vue"),
+             AllListings:()=> import("../components/listing/AllListings.vue")
         }
     }
 </script>
