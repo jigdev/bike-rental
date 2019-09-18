@@ -11,7 +11,7 @@
         components: {
 
             Banner: () => import("../components/Banner.vue"),
-             AllListings:()=> import("../components/listing/AllListings.vue")
+            AllListings:()=> import("../components/listing/AllListings.vue")
         }
     }
 </script>

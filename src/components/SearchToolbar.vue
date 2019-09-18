@@ -22,11 +22,10 @@
 </template>
 
 <script>
- import SearchField from "./SearchField.vue";
     export default {
         name: 'search-toolbar',
         components: {
-            SearchField
+            SearchField :()=> import("./SearchField.vue")
         },
         data() {
             return {
